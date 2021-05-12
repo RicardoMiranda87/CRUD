@@ -1,0 +1,27 @@
+<br>
+<br>
+<article>
+  <div class="text-white">
+    <h2>Nome</h2>
+    <p>
+      <%= @user.name %>
+    </p>
+    <h2>Idade</h2>
+    <p>
+      <%= @user.age %>
+    </p>
+    <h3>CPF</h3>
+    <p>
+      <%= @user.cpf %>
+    </p>
+    <h4>Gênero</h4>
+    <p>
+      <%= @user.genero.tipo%>
+  </div>
+  </p>
+</article>
+
+<%= link_to "Cadastro" , users_path, class:"btn btn-danger" %>
+<%= link_to "Editar Cadastro" , edit_user_path(@user), class:"btn btn-danger" %>
+<%= link_to "Deletar Cadastro" , user_path(@user), class:"btn btn-danger", method: :delete, data:{
+  confirm: "Deseja deletar este cadastro?" } %>

@@ -1,0 +1,38 @@
+<% if @user.errors.any? %>
+  <div class="alert alert-danger">
+    <ul>
+      <% @user.errors.full_messages.each do |mensagem| %>
+        <li>
+          <%= mensagem %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_for(@user) do |r|%>
+
+  <div class="text-white">
+    <p>
+      <%= r.label :Nome %></br>
+      <%= r.text_field :name, size: 20 %>
+    </p>
+    <p>
+      <%= r.label :Idade %></br>
+      <%= r.number_field :age, 'data-mask': '000' %>
+    </p>
+    <p>
+      <%= r.label :CPF %></br>
+      <%= r.text_field :cpf, 'data-mask': '000.000.000-00' %>
+    </p>
+    <p>
+      <%= r.label :Gênero %></br>
+      <%= r.collection_select :genero_id, Genero.all, :id, :tipo %>
+    </p>
+    <p>
+      <%= r.submit 'Confirmar' , class:"btn btn-danger" %>
+      <%= link_to 'Cancelar' , root_path, class:"btn btn-danger" %>
+    </p>
+  </div>
+  
+<% end %>
